@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{ title }} - película - allfi</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="{% static 'css/styles_movie.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<div id="background"
+     style="background-image: url('{{ urlbackdrop }}');"></div>
+<nav id="header" class="navbar navbar-fixed-top">
+    <div id="header-container" class="container navbar-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}"><img
+                    src="https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/icon_offdmw.png" width="60"
+                    height="35"></a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="navbar-form" action="{% url 'home' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control mr-sm-2" placeholder="Buscar" id="searchtext" name="searchtext">
+                        </div>
+                        <button type="submit" class="btn btn-search" id="searchbutton" name="searchbutton">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                </li>
+                <li>
+                    <a href="#" class="header-btn" data-toggle="dropdown">
+                        <!--<img class="img-circle"
+                             src="https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/1.NoGameNoLifeZero_B_orhc3u.jpg"
+                             width="35" height="35">-->
+                        <span><b>Cuenta</b></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href={% url 'user' %}><p>Configuración</p></a></li>
+                        <li><a href={% url 'logout' %}><p>Cerrar sesión</p></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.nav-collapse -->
+    </div><!-- /.container -->
+</nav><!-- /.navbar -->
+
+
+<div class="container movie">
+    <section class="row">
+        <div class="col-md-4 text-center movie-img">
+            <img src={{ poster }}
+                 class="m-img">
+        </div>
+        <div class="col-md-8 movie-detail">
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>{{ title }}</h1>
+                </div>
+                <div class="col-md-2 valor score">
+                    <h1>{{ valoración }}</h1>
+                </div>
+            </div>
+            <p>{{ descripción }}</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Tipo: {{ tipo }}</p>
+                    <p>Año de estreno: {{ año }}</p>
+                    <p>Director: {{ director }}</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-xs-2" id = "actores">
+                        <p>Actores: </p>
+                    </div>
+                    <div class="col-xs-10" id = "reparto">
+                        {% for actor in actor_list %}
+                        <p>{{ actor }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'play' playid %}" class="btn btn-ver"><span class="glyphicon glyphicon-play"></span> Ver ahora</a>
+        </div>
+    </section>
+</div>
+
+<div class="container series">
+    <h3>Recomendados</h3>
+    <section class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' recomendato1_id %}">
+                        <img src="{{ recomendado1_img }}">
+                        <p>{{ recomendado1_name }}</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' recomendato2_id %}">
+                        <img src="{{ recomendado2_img }}">
+                        <p>{{ recomendado2_name }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' recomendato3_id %}">
+                        <img src="{{ recomendado3_img }}">
+                        <p>{{ recomendado3_name }}</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' recomendato4_id %}">
+                        <img src="{{ recomendado4_img }}">
+                        <p>{{ recomendado4_name }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' recomendato5_id %}">
+                        <img src="{{ recomendado5_img }}">
+                        <p>{{ recomendado5_name }}</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' recomendato6_id %}">
+                        <img src="{{ recomendado6_img }}">
+                        <p>{{ recomendado6_name }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2020, allfi</p>
+</footer>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{% static 'scripts/script.js' %}"></script>
+</html>

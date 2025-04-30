@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>allfi</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="{% static 'css/styles_index.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container header">
+    <img src="https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/icon_offdmw.png" class="logo">
+    <!--<a href="login.html" class="btn btn-login">Iniciar sesión</a> -->
+</div>
+
+<div class="container">
+    <div class="sub-container">
+        <h1>Ve películas y series como quieras</h1>
+        <!--<h3>¡Regístrate ya!</h3>-->
+        <a href="{% url 'login' %}" class="btn btn-registrar">Iniciar sesión</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2020, allfi</p>
+</footer>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>

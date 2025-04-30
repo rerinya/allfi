@@ -1,0 +1,11 @@
+env/
+mysite/allfi/__pycache__/
+*.pyc
+mysite/allfi/__pycache__/
+*.db
+.env
+*.sqlite3
+.DS_Store
+.idea/
+*.log
+README_esp.txt

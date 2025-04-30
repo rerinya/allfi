@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Cuenta - allfi</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="{% static 'css/styles_account.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<!--<div id="background"
+     style="background-image: url('https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/1.NoGameNoLifeZero_B_orhc3u.jpg');"></div> -->
+<nav id="header" class="navbar navbar-fixed-top">
+    <div id="header-container" class="container navbar-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}"><img
+                    src="https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/icon_offdmw.png" width="60"
+                    height="35"></a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="navbar-form" action="{% url 'home' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control mr-sm-2" placeholder="Buscar" id="searchtext" name="searchtext">
+                        </div>
+                        <button type="submit" class="btn btn-search" id="searchbutton" name="searchbutton">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                </li>
+                <li>
+                    <a href="#" class="header-btn" data-toggle="dropdown">
+                        <!--<img class="img-circle"
+                             src="https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/1.NoGameNoLifeZero_B_orhc3u.jpg"
+                             width="35" height="35">-->
+                        <span><b>Cuenta</b></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href={% url 'user' %}><p>Configuración</p></a></li>
+                        <li><a href={% url 'logout' %}><p>Cerrar sesión</p></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.nav-collapse -->
+    </div><!-- /.container -->
+</nav><!-- /.navbar -->
+
+
+<div class=" modal-dialog info-user">
+    <div class="col-md-9 space-user">
+        <h2>Información del usuario</h2>
+        <form id="form-user">
+            <div class="form-group">
+                <label class="col-form-label">Nombre:</label>
+                <h5> {{ username }} </h5>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Correo electrónico:</label>
+                <h5> {{ email }} </h5>
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Contraseña:</label>
+                <h5>●●●●●●●●●●</h5>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2020, allfi</p>
+</footer>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{% static 'scripts/script.js' %}"></script>
+
+</html>

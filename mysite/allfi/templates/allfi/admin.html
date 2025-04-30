@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Cuenta - allfi</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="{% static 'css/styles_account.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<!--<div id="background"
+     style="background-image: url('https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/1.NoGameNoLifeZero_B_orhc3u.jpg');"></div> -->
+<nav id="header" class="navbar navbar-fixed-top">
+    <div id="header-container" class="container navbar-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}"><img
+                    src="https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/icon_offdmw.png" width="60"
+                    height="35"></a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="navbar-form" action="{% url 'home' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control mr-sm-2" placeholder="Buscar" id="searchtext" name="searchtext">
+                        </div>
+                        <button type="submit" class="btn btn-search" id="searchbutton" name="searchbutton">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                </li>
+                <li>
+                    <a href="#" class="header-btn" data-toggle="dropdown">
+                        <!--<img class="img-circle"
+                             src="https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/1.NoGameNoLifeZero_B_orhc3u.jpg"
+                             width="35" height="35">-->
+                        <span><b>Cuenta</b></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href={% url 'user' %}><p>Configuración</p></a></li>
+                        <li><a href={% url 'logout' %}><p>Cerrar sesión</p></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.nav-collapse -->
+    </div><!-- /.container -->
+</nav><!-- /.navbar -->
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3">
+            <!-- menu -->
+            <div id="MainMenu">
+                <div class="list-group panel">
+                    <a class="list-group-item ac" data-parent="#MainMenu" id="but-info">Información</a>
+                    <a href="#demo" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Administrar
+                        usuarios<i class="fa fa-caret-down"></i></a>
+                    <div class="collapse" id="demo">
+                        <a class="list-group-item" id="but-alta">Dar alta</a>
+                        <a class="list-group-item" id="but-mod">Modificar</a>
+                        <a class="list-group-item" id="but-baja">Eliminar</a>
+                        <a class="list-group-item" id="but-mostrar">Mostrar todos los usuarios</a>
+                    </div>
+                    <a href="#demo2" class="list-group-item" data-toggle="collapse" data-parent="#MainMenu">Administrar
+                        película<i class="fa fa-caret-down"></i></a>
+                    <div class="collapse" id="demo2">
+                        <a class="list-group-item" id="but-pelisub">Subir</a>
+                        <a class="list-group-item" id="but-pelimod">Modificar</a>
+                        <a class="list-group-item" id="but-pelieli">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 space">
+            <div class="info">
+                <h2>Información del usuario</h2>
+                <form class="col-4" id="form">
+                    <div class="form-group">
+                        <label class="col-form-label">Nombre:</label>
+                        <h5> {{ username }} </h5>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Correo electrónico:</label>
+                        <h5> {{ email }} </h5>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Contraseña:</label>
+                        <h5>●●●●●●●●●●</h5>
+                    </div>
+                </form>
+            </div>
+            <div class="altauser">
+                <h2> Dar alta al usuario</h2>
+                <form class="col-4" id="form" action="{% url 'user' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-form-label">Nombre:
+                            <input type="text" class="form-control " placeholder="Nombre" name="username" required></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Correo electrónico:
+                            <input type="text" class="form-control " placeholder="Correo electrónico"  name="email" required></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Contraseña:
+                            <input type="password" class="form-control " placeholder="Contraseña"  name="password" required></label>
+                    </div>
+                    <div class="text-left">
+                        <input type="submit" name="Submit_altauser" value="Dar alta" class="btn btn-crear">
+                    </div>
+                </form>
+            </div>
+            <div class="moduser">
+                <h2>Modificar el usuario</h2>
+                <form class="col-4" id="form" action="{% url 'user' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-form-label">Nombre del usuario a modificar:
+                            <input type="text" class="form-control " placeholder="Nombre" name="username" required></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Correo nuevo:
+                            <input type="text" class="form-control " placeholder="Correo electrónico" name="email"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Contraseña nueva:
+                            <input type="password" class="form-control " placeholder="Contraseña" name="password"></label>
+                    </div>
+                    <div class="text-left">
+                        <input type="submit" name="Submit_moduser" value="Modificar" class="btn btn-crear">
+                    </div>
+                </form>
+            </div>
+            <div class="bajauser">
+                <h2> Eliminar el usuario</h2>
+                <form class="col-4" id="form" action="{% url 'user' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-form-label">Nombre del usuario a eliminar:
+                            <input type="text" class="form-control " placeholder="Nombre del usuario" name="username" required></label>
+                    </div>
+                    <div class="text-left">
+                        <input type="submit" name="Submit_bajauser" value="Eliminar" class="btn btn-crear">
+                    </div>
+                </form>
+            </div>
+            <div class="mosuser">
+                <h2> Mostrar todos los usuarios</h2>
+                <div class="col-4">
+                    <div class="col-sm-6">
+                        <h4>Nombre</h4>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4>Correo electrónico</h4>
+                    </div>
+                    {% for u in user_list %}
+                    <div class="col-sm-6">
+                        <h5>{{ u.username }}</h5>
+                    </div>
+                    <div class="col-sm-6">
+                        <h5>{{ u.email }}</h5>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="subirpeli">
+                <h2> Subir película</h2>
+                <form class="col-4" id="form" action="{% url 'user' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-form-label">Nombre:
+                            <input type="text" class="form-control " placeholder="Nombre" name="name" required></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">URL del contenido:
+                            <input type="text" class="form-control " placeholder="URL del contenido"  name="url" required></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Descripción:
+                            <br>
+                            <textarea id="descrip" rows="7" cols="40" name="description"></textarea>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" id="anio">Año de estreno:
+                            <input type="number" placeholder="2020" step="1" min="1900" max="2100" id="anio-es" name="year"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Director/equipo:
+                            <input type="text" class="form-control " placeholder="Director/equipo" name="director"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Reparto: &nbsp; (Personaje1: Actor1;Personaje2: Actor2;)
+                            <input type="text" class="form-control " placeholder="Personaje: Actor;" name="actor"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">URL de la portada:
+                            <input type="text" class="form-control " placeholder="URL de la portada" name="urlposter"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">URL del fondo:
+                            <input type="text" class="form-control " placeholder="URL del fondo" name="urlbackdrop"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Género:   (Género1/Género2/Género3)
+                            <input type="text" class="form-control " placeholder="Género" name="genres"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" id="val">Valoración:
+                            <input type="number" placeholder="5.0" step="0.1" min="0" max="10" id="valor" name="score"></label>
+
+                    </div>
+                    <div class="text-left">
+                        <!--<a href="sol_operation.html" class="btn btn-crear " type="iniciar">Subir</a>-->
+                        <input type="submit" name="Submit_subirpeli" value="Subir" class="btn btn-crear">
+                    </div>
+                </form>
+            </div>
+            <div class="modpeli">
+                <h2> Modificar película</h2>
+                <form class="col-4" id="form" action="{% url 'user' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-form-label">Nombre:
+                            <input type="text" class="form-control " placeholder="Nombre" name="name" required></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">URL del contenido nuevo:
+                            <input type="text" class="form-control " placeholder="URL del contenido"  name="url"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Descripción nuevo:
+                            <br>
+                            <textarea id="descrip" rows="7" cols="40" name="description"></textarea>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" id="anio">Año de estreno nuevo:
+                            <input type="number" placeholder="2020" step="1" min="1900" max="2100" id="anio-es" name="year"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Director/equipo nuevo:
+                            <input type="text" class="form-control " placeholder="Director/equipo" name="director"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Reparto nuevo: &nbsp; (Personaje1: Actor1;Personaje2: Actor2;)
+                            <input type="text" class="form-control " placeholder="Personaje: Actor;" name="actor"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">URL de la portada nuevo:
+                            <input type="text" class="form-control " placeholder="URL de la portada" name="urlposter"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">URL del fondo nuevo:
+                            <input type="text" class="form-control " placeholder="URL del fondo" name="urlbackdrop"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Género nuevo:   (Género1/Género2/Género3)
+                            <input type="text" class="form-control " placeholder="Género" name="genres"></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label" id="val">Valoración nueva:
+                            <input type="number" placeholder="5.0" step="0.1" min="0" max="10" id="valor" name="score"></label>
+
+                    </div>
+                    <div class="text-left">
+                        <!--<a href="sol_operation.html" class="btn btn-crear " type="iniciar">Subir</a>-->
+                        <input type="submit" name="Submit_modpeli" value="Modificar" class="btn btn-crear">
+                    </div>
+                </form>
+            </div>
+            <div class="elimpeli">
+                <h2> Eliminar película</h2>
+                <form class="col-4" id="form" action="{% url 'user' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="col-form-label">Nombre de la película a eliminar:
+                            <input type="text" class="form-control " placeholder="Nombre" name="name" required></label>
+                    </div>
+                    <div class="text-left">
+                        <input type="submit" name="Submit_elimpeli" value="Eliminar" class="btn btn-crear">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <p>&copy; 2020, allfi</p>
+</footer>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{% static 'scripts/script.js' %}"></script>
+
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>allfi</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link href="{% static 'css/styles_home.css' %}" rel="stylesheet">
+</head>
+
+<body>
+<!--<div id="background"
+     style="background-image: url('https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/1.NoGameNoLifeZero_B_orhc3u.jpg');"></div> -->
+<nav id="header" class="navbar navbar-fixed-top">
+    <div id="header-container" class="container navbar-container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{% url 'home' %}"><img
+                    src="https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/icon_offdmw.png" width="60"
+                    height="35"></a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="navbar-form" action="{% url 'home' %}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control mr-sm-2" placeholder="Buscar" id="searchtext"
+                                   name="searchtext">
+                        </div>
+                        <button type="submit" class="btn btn-search" id="searchbutton" name="searchbutton">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                </li>
+                <li>
+                    <a href="#" class="header-btn" data-toggle="dropdown">
+                        <!--<img class="img-circle"
+                             src="https://res.cloudinary.com/rinya/image/upload/v1584655654/videoclub/1.NoGameNoLifeZero_B_orhc3u.jpg"
+                             width="35" height="35">-->
+                        <span><b>Cuenta</b></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href={% url 'user' %}><p>Configuración</p></a></li>
+                        <li><a href={% url 'logout' %}><p>Cerrar sesión</p></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.nav-collapse -->
+    </div><!-- /.container -->
+</nav><!-- /.navbar -->
+
+
+<div class="container carousel">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <a href={% url 'movie' 9 %}>
+                    <img src="https://res.cloudinary.com/rinya/image/upload/h_250,w_1150/v1584894316/horizontal/1_OXF5t8ylRCq63End0CZkPQ_trzxui.png">
+                </a>
+            </div>
+            <div class="item">
+                <a href={% url 'movie' 37 %}>
+                    <img src="https://res.cloudinary.com/rinya/image/upload/h_250,w_1150/v1584898510/horizontal/3.FateStayNightHF_krezsx.jpg">
+                </a>
+            </div>
+            <div class="item">
+                <a href={% url 'movie' 41 %}>
+                    <img src="https://res.cloudinary.com/rinya/image/upload/h_250,w_1150/v1584894316/horizontal/underworld_blood_wars_kiqnc5.jpg">
+                </a>
+            </div>
+            <div class="item">
+                <a href={% url 'movie' 42 %}>
+                    <img src="https://res.cloudinary.com/rinya/image/upload/h_250,w_1150/v1584894316/horizontal/twilight-breaking-french-quad_d2qga4.jpg">
+                </a>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<div class="container series">
+    <br>
+    <section class="row" id="generos">
+        <section class="row">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' ciencia %}">
+                            <p id="gent">Ciencia Ficción</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' misterio %}">
+                            <p id="gent">Misterio</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' crimen %}">
+                            <p id="gent">Crimen</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' suspense %}">
+                            <p id="gent">Suspense</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' terror %}">
+                            <p id="gent">Terror</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' aventura %}">
+                            <p id="gent">Aventura</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="row">
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' fantasia %}">
+                            <p id="genb">Fantasía</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' romance %}">
+                            <p id="genb">Romance</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' animacion %}">
+                            <p id="genb">Animación</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' drama %}">
+                            <p id="genb">Drama</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' comedia %}">
+                            <p id="genb">Comedia</p>
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="{% url 'genre' accion %}">
+                            <p id="genb">Acción</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <br>
+    <h3>Recomendados</h3>
+    <section class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 4 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//dflq9mJ99PC3I3piHYFmEzwW1q1.jpg">
+                        <p>Drácula, la leyenda jamás contada</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 6 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//towmTJ0k29quKI9IDnOZKAAtQx.jpg">
+                        <p>Mulán</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 8 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//i8qn2A0Qfjj45EXlZVt92WnX7iH.jpg">
+                        <p>Maléfica</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 9 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//tWbiAwIOmo4A49O60J7U9qjfQDl.jpg">
+                        <p>El hombre invisible</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 10 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//xkDyyA8jfe79pS07SdCsc05VGTi.jpg">
+                        <p>John Henry</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 11 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//uAUCHOYwFKQvSRZByP8rCgWKwT.jpg">
+                        <p>Viuda negra</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 12 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//tHWeWBBOlkPYdlZcjSKeToQvgZg.jpg">
+                        <p>Onward</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 13 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//4FIkegMNgKfjMMscpQK1LBt2xTD.jpg">
+                        <p>Sin tiempo para morir</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 14 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//9hd5th0fvFmAwkVOntWG4cilmSk.jpg">
+                        <p>The King's Man: La primera misión</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 15 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//vkwgzCBBiY3C1XEy0WakYfMOvnG.jpg">
+                        <p>Color Out of Space</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 16 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//jEGvrYgdLe2fDhx7WSbyjJECsXO.jpg">
+                        <p>El viaje de Chihiro</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 17 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//uIZd6zrWAYSeRhfUgbjgE5shdl2.jpg">
+                        <p>Impossible Monster</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<hr class="divider">
+
+
+<div class="container series">
+    <h3>Nuevos</h3>
+    <section class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' nuevo1_id %}">
+                        <img src="{{ nuevo1_img }}">
+                        <p>{{ nuevo1_name }}</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' nuevo2_id %}">
+                        <img src="{{ nuevo2_img }}">
+                        <p>{{ nuevo2_name }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' nuevo3_id %}">
+                        <img src="{{ nuevo3_img }}">
+                        <p>{{ nuevo3_name }}</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' nuevo4_id %}">
+                        <img src="{{ nuevo4_img }}">
+                        <p>{{ nuevo4_name }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' nuevo5_id %}">
+                        <img src="{{ nuevo5_img }}">
+                        <p>{{ nuevo5_name }}</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="{% url 'movie' nuevo6_id %}">
+                        <img src="{{ nuevo6_img }}">
+                        <p>{{ nuevo6_name }}</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<hr class="divider">
+
+
+<div class="container series">
+    <section class="row">
+        <div class="col-xs-10">
+            <h3>Terror</h3>
+        </div>
+        <div class="col-xs-2 text-right">
+            <a href="{% url 'genre' terror %}" class="btn btn-mas">Más<span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+    </section>
+    <section class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 18 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//j0jnCDQLp1WLm3YAns52nsYMiDt.jpg">
+                        <p>Triangle</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 19 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//lMFgbCskJgsJdPH81SwVZOc1hNs.jpg">
+                        <p>Un lugar tranquilo</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 20 %}>
+                        <img src="https://res.cloudinary.com/rinya/image/upload/w_700,h_1000/v1584840663/terror%20o%20suspenso/identity_v3byw6.jpg">
+                        <p>Identidad</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 21 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//7aMvCD4TkQ8rKqrJiuPCJnHinrk.jpg">
+                        <p>La cara oculta</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 22 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//kUEbVMrs80nWXtTA8tKd8jRwnIn.jpg">
+                        <p>Nosotros</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 23 %}>
+                        <img src="https://res.cloudinary.com/rinya/image/upload/w_700,h_1000/v1584840664/terror%20o%20suspenso/contratiempo_ct0yqr.jpg">
+                        <p>ContraTiempo</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div class="container series">
+    <section class="row">
+        <div class="col-xs-10">
+            <h3>Comedia</h3>
+        </div>
+        <div class="col-xs-2 text-right">
+            <a href="{% url 'genre' comedia %}" class="btn btn-mas">Más<span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+    </section>
+    <section class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 24 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//udKmMwVkTXib1Puj0tidnBQtU28.jpg">
+                        <p>La gran enfermedad del amor</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 25 %}>
+                        <img src="https://res.cloudinary.com/rinya/image/upload/w_700,h_1000/v1584840637/comedia/emma-poster_f6itl1.jpg">
+                        <p>Emma.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 26 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//owc19BjLSJjCreSKBGKbC1Z2RHT.jpg">
+                        <p>Chicas malas</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 27 %}>
+                        <img src="https://res.cloudinary.com/rinya/image/upload/w_700,h_1000/v1584840638/comedia/super_lopez_lcyxmm.jpg">
+                        <p>Superlópez</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 28 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//y0FiGt44M7rveQYnYkIO3UttbTP.jpg">
+                        <p>El diablo viste de Prada</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 29 %}>
+                        <img src="https://res.cloudinary.com/rinya/image/upload/w_700,h_1000/v1584840639/comedia/the_lovebirds_gos1zn.jpg">
+                        <p>The Lovebirds</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<div class="container series">
+    <section class="row">
+        <div class="col-xs-10">
+            <h3>Animación</h3>
+        </div>
+        <div class="col-xs-2 text-right">
+            <a href="{% url 'genre' animacion %}" class="btn btn-mas">Más<span class="glyphicon glyphicon-chevron-right"></span></a>
+        </div>
+    </section>
+    <section class="row">
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 36 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//zCbmvY5pqUx7Kn5qifW6NqtmaB2.jpg">
+                        <p>Your name</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 37 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//4tS0iyKQBDFqVpVcH21MSJwXZdq.jpg">
+                        <p>Fate/stay night: Heaven's Feel</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 38 %}>
+                        <img src="https://res.cloudinary.com/rinya/image/upload/w_700,h_1000/v1584655653/videoclub/4.SAO_OrdinalScale_jpmpgu.jpg">
+                        <p>Sword Art Online La película: Ordinal Scale</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 39 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//wGYmvSZIj2ragDNSWhyunOXu2Oc.jpg">
+                        <p>Evangelion: 1.11 You Are (Not) Alone</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 16 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//jEGvrYgdLe2fDhx7WSbyjJECsXO.jpg">
+                        <p>El viaje de Chihiro</p>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href={% url 'movie' 40 %}>
+                        <img src="https://image.tmdb.org/t/p/w500//ym6sfaLgPx4vyBZFmQzsV37uvk5.jpg">
+                        <p>El Castillo Ambulante</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2020, allfi</p>
+</footer>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{% static 'scripts/script.js' %}"></script>
+</html>
